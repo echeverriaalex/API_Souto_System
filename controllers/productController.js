@@ -21,8 +21,19 @@ const getProducts = (req, res, next) =>{
         .catch(err => next(err))   
 }
 
-const getProduct = async(req, res, next) =>{
-    
+const getProduct2 = async(req, res, next) =>{
+    Product.findOne({ where: {code: "5435345"}})
+        .then(products => res.status(200).send(products))
+        .catch(err => next(err))
+}
+
+const getProductByID = async(req, res, next) =>{
+
+    const { code } = req.params;
+    //console.log("code find ---> " + code);
+    Product.findOne({ where: {code: code}})
+        .then(products => res.status(200).send(products))
+        .catch(err => next(err))
 }
 
 
@@ -41,7 +52,7 @@ const hola = (req, res)=>{
 
 module.exports = {
     createProduct,
-    getProduct,
+    getProductByID,
     getProducts,
     editProduct,
     deleteProduct,

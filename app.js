@@ -1,7 +1,14 @@
 const express = require("express");
 const router = require("./router");
+const cors = require('cors');
+
 const app = express();
 const port = 4000
+
+// npm i cors tutorial: https://www.youtube.com/watch?v=ElcuQfA6aNY
+
+app.use(express.json());
+app.use(cors());
 
 app.use('/', router);
 
@@ -51,6 +58,7 @@ const jane2 =  User.create({name: "Jane2"}).then();
 npm i mysql2 # MySQL
 
 */
+
 
 app.listen(port, () =>{
     console.log(`API Rest Souto System in port ${port}`);

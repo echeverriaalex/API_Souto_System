@@ -3,12 +3,14 @@ const { Product } = db;
 
 const createProduct = async(req, res, next) =>{
     let body = req.body;
-    let {brand, description, code, price} = body;
+    let {brand, description, code, price, image} = body;
+    console.log("create prodcut");
     Product.create({
         brand: brand,
         description: description,
         code: code,
-        price: price
+        price: price,
+        image: image
     })
     .then(product => res.status(201).send(product))
     .catch(err => res.status(400).send(err))    

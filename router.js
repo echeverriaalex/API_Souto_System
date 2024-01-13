@@ -2,10 +2,13 @@ const express = require("express");
 const router = express.Router();
 const bodyParser = require("body-parser");
 const morgan = require("morgan");
-
 const ProductController = require('./controllers/productController');
+const app = express();
+//router.use(morgan());
 
-router.use(morgan());
+// Usar express.json() o bodyParser.json() es lo mismo es para que lea 
+// la info que se envia por body
+//app.use(express.json());
 router.use(bodyParser.json())
 
 router.post('/product', ProductController.createProduct);
@@ -16,7 +19,7 @@ router.get('/product/:code', ProductController.getProductByID);
 //router.delete('/product/:id', ProductController.deleteProduct);
 
 
-router.get('', );
+//router.get('', );
 
 
 router.get('/', (req, res)=>{
